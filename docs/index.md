@@ -1,5 +1,5 @@
 ---
-layout: group
+layout: default
 title: "WGMLEARN"
 heading: "Working Group on Machine Learning in Marine Science"
 tagline: "Pioneering the application of machine learning and artificial intelligence in marine research and ecosystem observation"
