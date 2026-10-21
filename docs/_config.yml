@@ -1,8 +1,8 @@
 title: "ICES WGMLEARN"
 email: "info@ices.dk"
 description: "ICES Working Group on Machine Learning in Marine Science"
-baseurl: "/wg_WGMLEARN" # subpath of your site, e.g. /my-site
-url: "https://jason-conner-noaa.github.io" # base hostname & protocol for your site, e.g. http://localhost:4000
+baseurl: "/" # subpath of your site, e.g. /my-site
+url: "https://wgmlearn.org/" # base hostname & protocol for your site, e.g. http://localhost:4000
 github_username: "jason-conner-NOAA"
 
 # Build settings
