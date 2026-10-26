@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   {% feed_meta %}
 </head>
+
 <body>
 
   <!-- Full-width Institutional Header -->
@@ -15,7 +17,8 @@
     <div class="header-container">
       <div class="logo-area">
         <a class="site-title" href="{{ '/' | relative_url }}">
-          <span class="logo-icon">⚓</span> ICES <span class="logo-sub">WGMLEARN</span>
+          <span class="logo-icon"><img src="{{ '/assets/icon_1.png' | relative_url }}" alt="WGMLEARN logo"></span> ICES
+          <span class="logo-sub">WGMLEARN</span>
         </a>
       </div>
       <nav class="site-nav">
@@ -23,7 +26,8 @@
         <label for="nav-trigger">
           <span class="menu-icon">
             <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+              <path
+                d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
             </svg>
           </span>
         </label>
@@ -63,27 +67,32 @@
         <div class="footer-col footer-col-1">
           <h3>ICES Secretariat</h3>
           <p>H. C. Andersens Boulevard 44-46<br>
-          DK-1553 Copenhagen V<br>
-          Denmark<br>
-          Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+            DK-1553 Copenhagen V<br>
+            Denmark<br>
+            Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
         </div>
         <div class="footer-col footer-col-2">
           <h3>Working Group MLEARN</h3>
-          <p>The Working Group on Machine Learning in Marine Science (WGMLEARN) facilitates global collaboration on deep learning, computer vision, and machine learning methods applied to marine research and resource monitoring.</p>
+          <p>The Working Group on Machine Learning in Marine Science (WGMLEARN) facilitates global collaboration on deep
+            learning, computer vision, and machine learning methods applied to marine research and resource monitoring.
+          </p>
         </div>
         <div class="footer-col footer-col-3">
           <h3>Connect</h3>
           <ul class="social-media-list">
-            <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">💻 GitHub ({{ site.github_username }})</a></li>
+            <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">💻 GitHub ({{
+                site.github_username }})</a></li>
             <li><a href="https://www.ices.dk" target="_blank" rel="noopener">🌐 ICES Official Website</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; {{ "now" | date: "%Y" }} International Council for the Exploration of the Sea (ICES). All rights reserved.</p>
+        <p>&copy; {{ "now" | date: "%Y" }} International Council for the Exploration of the Sea (ICES). All rights
+          reserved.</p>
       </div>
     </div>
   </footer>
 
 </body>
+
 </html>
