@@ -69,13 +69,15 @@ WGMLEARN operates under a structured, three-year planning cycle. Our current cor
 
 | ToR | Description | Deliverables |
 | :--- | :--- | :--- |
-| **ToR A: Identify Challenges** | Develop a comprehensive list of AI/ML topics, task frameworks, and unmet challenges specific to the marine domain and potential benefits. Integrates output from WKAAII. | • A high-impact **Review Paper** in a "food-for-thought" format detailing marine ML bottlenecks. |
-| **ToR B: Coordinate Groups** | Establish communication and coordinate with other ICES working groups, research groups, and databases to explore collaboration opportunities and chart user needs. | • A comprehensive **List of Networking Contacts** and database of active marine AI collaborators. |
-| **ToR C: Organize Events** | Organize and execute 5–10 capacity-building events (tutorials, hackathons, workshops, and conference sessions) to target important challenges. | • **Tutorials**: Online learning modules and video recordings.<br>• **Hackathons**: Open-source code repositories (GitHub) and peer-reviewed manuscripts. |
+| [**ToR A: Identify Challenges**]({{ '/ToR/unmet-challenges/' | relative_url }}) | Develop a comprehensive list of AI/ML topics, task frameworks, and unmet challenges specific to the marine domain and potential benefits. Integrates output from WKAAII. | • A high-impact **Review Paper** in a "food-for-thought" format detailing marine ML bottlenecks. |
+| [**ToR B: Coordinate Groups**]({{ '/ToR/coordinate-working-groups/' | relative_url }}) | Establish communication and coordinate with other ICES working groups, research groups, and databases to explore collaboration opportunities and chart user needs. | • A comprehensive **List of Networking Contacts** and database of active marine AI collaborators. |
+| [**ToR C: Organize Events**]({{ '/ToR/organize-events/' | relative_url }}) | Organize and execute 5–10 capacity-building events (tutorials, hackathons, workshops, and conference sessions) to target important challenges. | • **Tutorials**: Online learning modules and video recordings.<br>• **Hackathons**: Open-source code repositories (GitHub) and peer-reviewed manuscripts. |
 
 ---
 
 ## Highlights: Unmet Challenges in Marine ML
+
+See the complete [ToR A challenge matrix]({{ '/ToR/unmet-challenges/' | relative_url }}) for all identified marine ML challenges.
 
 Under **ToR A**, we have categorized the critical areas where standard AI algorithms fall short and where specialized marine-focused research is required:
 
