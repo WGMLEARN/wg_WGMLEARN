@@ -30,7 +30,7 @@ jobs:
 
       - name: Fetch and split Google Doc into Markdown pages
         env:
-          GOOGLE_DOC_ID: ${{ secrets.GOOGLE_DOC_ID }}
+          GOOGLE_DOC_ID_2026: ${{ secrets.GOOGLE_DOC_ID_2026 }}
           OUTPUT_DIR: docs/_posts
         run: |
           pip install html2text

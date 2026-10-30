@@ -16,9 +16,10 @@ chairs:
     email: "hassan.moustahfid@noaa.gov "
 
 events:
-  - date: "November, 2026"
-    title: "WGMLEARN Annual Meeting"
-    location: "Copenhagen, DE"
+  - date: "November 9–13, 2026"
+    title: "WGMLEARN 2026 Workshop Bergen"
+    location: "Bergen, Norway"
+    url: "/meetings/2026-workshop-bergen/"
   - date: "December 04, 2026"
     title: "Hands-on Tutorial: Foundation Models (SAM+DINO)"
     location: "Online (GitHub Classroom)"

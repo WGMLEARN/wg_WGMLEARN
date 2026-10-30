@@ -32,7 +32,13 @@
       {% for event in page.events %}
         <li>
           <div class="event-date">{{ event.date }}</div>
-          <div class="event-title"><strong>{{ event.title }}</strong></div>
+          <div class="event-title">
+            {% if event.url %}
+            <strong><a href="{{ event.url | relative_url }}">{{ event.title }}</a></strong>
+            {% else %}
+            <strong>{{ event.title }}</strong>
+            {% endif %}
+          </div>
           <div class="event-location">{{ event.location }}</div>
         </li>
       {% endfor %}
