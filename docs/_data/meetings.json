@@ -1,12 +1,12 @@
 [
-  {
-    "id": "2026-workshop-bergen",
-    "title": "WGMLEARN 2026 Workshop Bergen",
-    "date": "2026-11-09",
-    "start_date": "2026-11-09",
-    "end_date": "2026-11-13",
-    "location": "Bergen, Norway",
-    "permalink": "/meetings/2026-workshop-bergen/",
-    "document_env": "GOOGLE_DOC_ID_2026"
-  }
+    {
+        "id": "2026-workshop-bergen",
+        "title": "WGMLEARN 2026 Workshop Bergen",
+        "date": "2026-11-09",
+        "start_date": "2026-11-09",
+        "end_date": "2026-11-13",
+        "location": "Bergen, Norway",
+        "permalink": "/meetings/2026-workshop-bergen/",
+        "document_env": "GOOGLE_DOC_ID_2026"
+    }
 ]

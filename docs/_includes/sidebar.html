@@ -1,105 +1,107 @@
 <div class="sidebar-block chair-block">
   <h3>Group Chairs</h3>
   {% if page.chairs %}
-    {% for chair in page.chairs %}
-      <div class="chair-info">
-        <strong>{{ chair.name }}</strong><br>
-        <span class="chair-affiliation">{{ chair.affiliation }}</span><br>
-        <span class="chair-country">{{ chair.country }}</span>
-        {% if chair.email %}
-          <br><a href="mailto:{{ chair.email }}" class="email-link">📧 Contact Chair</a>
-        {% endif %}
-      </div>
-    {% endfor %}
+  {% for chair in page.chairs %}
+  <div class="chair-info">
+    <strong>{{ chair.name }}</strong><br>
+    <span class="chair-affiliation">{{ chair.affiliation }}</span><br>
+    <span class="chair-country">{{ chair.country }}</span>
+    {% if chair.email %}
+    <br><a href="mailto:{{ chair.email }}" class="email-link">📧 Contact Chair</a>
+    {% endif %}
+  </div>
+  {% endfor %}
   {% else %}
-    <div class="chair-info">
-      <strong>Ketil Malde</strong><br>
-      <span class="chair-affiliation">Institute of Marine Research (IMR)</span><br>
-      <span class="chair-country">Norway</span>
-    </div>
-    <div class="chair-info" style="margin-top: 1rem;">
-      <strong>Jean-Olivier Irisson</strong><br>
-      <span class="chair-affiliation">Sorbonne University / LOV</span><br>
-      <span class="chair-country">France</span>
-    </div>
+  <div class="chair-info">
+    <strong>Ketil Malde</strong><br>
+    <span class="chair-affiliation">Institute of Marine Research (IMR)</span><br>
+    <span class="chair-country">Norway</span>
+  </div>
+  <div class="chair-info" style="margin-top: 1rem;">
+    <strong>Jean-Olivier Irisson</strong><br>
+    <span class="chair-affiliation">Sorbonne University / LOV</span><br>
+    <span class="chair-country">France</span>
+  </div>
   {% endif %}
 </div>
 
 <div class="sidebar-block events-block">
   <h3>Upcoming Events</h3>
   {% if page.events %}
-    <ul class="sidebar-list">
-      {% for event in page.events %}
-        <li>
-          <div class="event-date">{{ event.date }}</div>
-          <div class="event-title">
-            {% if event.url %}
-            <strong><a href="{{ event.url | relative_url }}">{{ event.title }}</a></strong>
-            {% else %}
-            <strong>{{ event.title }}</strong>
-            {% endif %}
-          </div>
-          <div class="event-location">{{ event.location }}</div>
-        </li>
-      {% endfor %}
-    </ul>
+  <ul class="sidebar-list">
+    {% for event in page.events %}
+    <li>
+      <div class="event-date">{{ event.date }}</div>
+      <div class="event-title">
+        {% if event.url %}
+        <strong><a href="{{ event.url | relative_url }}">{{ event.title }}</a></strong>
+        {% else %}
+        <strong>{{ event.title }}</strong>
+        {% endif %}
+      </div>
+      <div class="event-location">{{ event.location }}</div>
+    </li>
+    {% endfor %}
+  </ul>
   {% else %}
-    <ul class="sidebar-list">
-      <li>
-        <div class="event-date">October 12-16, 2026</div>
-        <div class="event-title"><strong>WGMLEARN Annual Meeting</strong></div>
-        <div class="event-location">Nantes, France (Hybrid)</div>
-      </li>
-      <li>
-        <div class="event-date">December 04, 2026</div>
-        <div class="event-title"><strong>WGMLEARN Hands-on Tutorial: SAM+DINO</strong></div>
-        <div class="event-location">Online</div>
-      </li>
-    </ul>
+  <ul class="sidebar-list">
+    <li>
+      <div class="event-date">October 12-16, 2026</div>
+      <div class="event-title"><strong>WGMLEARN Annual Meeting</strong></div>
+      <div class="event-location">Nantes, France (Hybrid)</div>
+    </li>
+    <li>
+      <div class="event-date">December 04, 2026</div>
+      <div class="event-title"><strong>WGMLEARN Hands-on Tutorial: SAM+DINO</strong></div>
+      <div class="event-location">Online</div>
+    </li>
+  </ul>
   {% endif %}
 </div>
 
 <div class="sidebar-block links-block">
   <h3>Quick Links</h3>
   {% if page.quick_links %}
-    <ul class="sidebar-list links-list">
-      {% for link in page.quick_links %}
-        <li><a href="{{ link.url }}" target="_blank" rel="noopener">🔗 {{ link.text }}</a></li>
-      {% endfor %}
-    </ul>
+  <ul class="sidebar-list links-list">
+    {% for link in page.quick_links %}
+    <li><a href="{{ link.url }}" target="_blank" rel="noopener">🔗 {{ link.text }}</a></li>
+    {% endfor %}
+  </ul>
   {% else %}
-    <ul class="sidebar-list links-list">
-      <li><a href="https://www.ices.dk/community/groups/Pages/WGMLEARN.aspx" target="_blank" rel="noopener">🔗 ICES WGMLEARN SharePoint</a></li>
-      <li><a href="https://github.com/ices-eg/wgmlearn" target="_blank" rel="noopener">🔗 WGMLEARN GitHub Org</a></li>
-      <li><a href="https://www.ices.dk/data/data-portals/Pages/default.aspx" target="_blank" rel="noopener">🔗 ICES Data Portals</a></li>
-    </ul>
+  <ul class="sidebar-list links-list">
+    <li><a href="https://www.ices.dk/community/groups/Pages/WGMLEARN.aspx" target="_blank" rel="noopener">🔗 ICES
+        WGMLEARN SharePoint</a></li>
+    <li><a href="https://github.com/ices-eg/wgmlearn" target="_blank" rel="noopener">🔗 WGMLEARN GitHub Org</a></li>
+    <li><a href="https://www.ices.dk/data/data-portals/Pages/default.aspx" target="_blank" rel="noopener">🔗 ICES Data
+        Portals</a></li>
+  </ul>
   {% endif %}
 </div>
 
 <div class="sidebar-block pubs-block">
   <h3>Latest Publications</h3>
   {% if page.publications %}
-    <ul class="sidebar-list">
-      {% for pub in page.publications %}
-        <li>
-          <span class="pub-year">[{{ pub.year }}]</span>
-          <span class="pub-title"><em>{{ pub.title }}</em></span><br>
-          <span class="pub-meta">{{ pub.citation }}</span>
-        </li>
-      {% endfor %}
-    </ul>
+  <ul class="sidebar-list">
+    {% for pub in page.publications %}
+    <li>
+      <span class="pub-year">[{{ pub.year }}]</span>
+      <span class="pub-title"><em>{{ pub.title }}</em></span><br>
+      <span class="pub-meta">{{ pub.citation }}</span>
+    </li>
+    {% endfor %}
+  </ul>
   {% else %}
-    <ul class="sidebar-list">
-      <li>
-        <span class="pub-year">[2025]</span>
-        <span class="pub-title"><em>WGMLEARN Annual Report 2024</em></span><br>
-        <span class="pub-meta">ICES Scientific Reports, 6:92</span>
-      </li>
-      <li>
-        <span class="pub-year">[2024]</span>
-        <span class="pub-title"><em>A review of computer vision applications in marine science</em></span><br>
-        <span class="pub-meta">ICES Journal of Marine Science, Vol 81</span>
-      </li>
-    </ul>
+  <ul class="sidebar-list">
+    <li>
+      <span class="pub-year">[2025]</span>
+      <span class="pub-title"><em>WGMLEARN Annual Report 2024</em></span><br>
+      <span class="pub-meta">ICES Scientific Reports, 6:92</span>
+    </li>
+    <li>
+      <span class="pub-year">[2024]</span>
+      <span class="pub-title"><em>A review of computer vision applications in marine science</em></span><br>
+      <span class="pub-meta">ICES Journal of Marine Science, Vol 81</span>
+    </li>
+  </ul>
   {% endif %}
 </div>

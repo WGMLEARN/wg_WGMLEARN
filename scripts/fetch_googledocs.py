@@ -14,7 +14,6 @@ from pathlib import Path
 
 import html2text
 
-
 ROOT_DIR = Path(__file__).resolve().parent.parent
 MEETINGS_FILE = Path(
     os.environ.get("MEETINGS_FILE", ROOT_DIR / "docs" / "_data" / "meetings.json")
@@ -27,16 +26,22 @@ def load_meetings():
     try:
         meetings = json.loads(MEETINGS_FILE.read_text(encoding="utf-8"))
     except FileNotFoundError as error:
-        raise FileNotFoundError(f"Meeting registry not found: {MEETINGS_FILE}") from error
+        raise FileNotFoundError(
+            f"Meeting registry not found: {MEETINGS_FILE}"
+        ) from error
     except json.JSONDecodeError as error:
-        raise ValueError(f"Meeting registry is not valid JSON: {MEETINGS_FILE}") from error
+        raise ValueError(
+            f"Meeting registry is not valid JSON: {MEETINGS_FILE}"
+        ) from error
 
     required_fields = {"id", "title", "date", "permalink", "document_env"}
     for meeting in meetings:
         missing_fields = required_fields - meeting.keys()
         if missing_fields:
             missing = ", ".join(sorted(missing_fields))
-            raise ValueError(f"Meeting {meeting.get('id', '<unknown>')} is missing: {missing}")
+            raise ValueError(
+                f"Meeting {meeting.get('id', '<unknown>')} is missing: {missing}"
+            )
     return meetings
 
 
@@ -93,7 +98,8 @@ def write_post(meeting, title, body, section_order):
         "permalink": permalink,
     }
     yaml_lines = "\n".join(
-        f"{key}: {json.dumps(value, ensure_ascii=False)}" for key, value in front_matter.items()
+        f"{key}: {json.dumps(value, ensure_ascii=False)}"
+        for key, value in front_matter.items()
     )
     filepath.write_text(f"---\n{yaml_lines}\n---\n\n{body.strip()}\n", encoding="utf-8")
     print(f"Generated: {filepath}")
