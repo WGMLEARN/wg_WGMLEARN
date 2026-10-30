@@ -4,8 +4,8 @@ on:
   push:
     branches: ["main"]
   schedule:
-    - cron: "0 0 * * *" # Runs daily at midnight UTC to pull doc updates
-  workflow_dispatch:   # Enables manual runs from the GitHub Actions tab
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -31,21 +31,26 @@ jobs:
       - name: Fetch and split Google Doc into Markdown pages
         env:
           GOOGLE_DOC_ID: ${{ secrets.GOOGLE_DOC_ID }}
+          OUTPUT_DIR: docs/_posts
         run: |
           pip install html2text
           python scripts/fetch_googledocs.py
 
       - name: Setup Pages configuration
+        id: pages
         uses: actions/configure-pages@v5
 
       - name: Build Jekyll site
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
-          destination: ./_site
+          source: ./docs
+          destination: ./docs/_site
+          base_path: ${{ steps.pages.outputs.base_path }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs/_site
 
   deploy:
     environment:

@@ -11,7 +11,7 @@ if not DOC_ID:
     raise ValueError("GOOGLE_DOC_ID environment variable is missing.")
 
 EXPORT_URL = f"https://docs.google.com/document/d/{DOC_ID}/export?format=html"
-OUTPUT_DIR = "_posts"  # Or use "_pages" depending on your layout structure
+OUTPUT_DIR = os.environ.get("OUTPUT_DIR", "_posts")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # 1. Fetch Google Doc HTML
