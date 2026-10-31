@@ -3,50 +3,6 @@ layout: group
 title: "WGMLEARN"
 heading: "Working Group on Machine Learning in Marine Science"
 tagline: "Pioneering the application of machine learning and artificial intelligence in marine research and ecosystem observation"
-
-# Dynamic Sidebar Configuration
-chairs:
-  - name: "Ketil Malde"
-    affiliation: "Institute of Marine Research (IMR)"
-    country: "Norway"
-    email: "ketil.malde@hi.no"
-  - name: "Hassan Moustahfid"
-    affiliation: "National Oceanic and Atmospheric Administration (NOAA)"
-    country: "United States"
-    email: "hassan.moustahfid@noaa.gov "
-
-events:
-  - date: "November 9–13, 2026"
-    title: "WGMLEARN 2026 Workshop Bergen"
-    location: "Bergen, Norway"
-    url: "/meetings/2026-workshop-bergen/"
-  - date: "December 04, 2026"
-    title: "Hands-on Tutorial: Foundation Models (SAM+DINO)"
-    location: "Online (GitHub Classroom)"
-  - date: "February 22-26, 2027"
-    title: "International Marine AI Hackathon"
-    location: "Bergen, Norway"
-
-quick_links:
-  - text: "ICES WGMLEARN Official Page"
-    url: "https://www.ices.dk/community/groups/Pages/WGMLEARN.aspx"
-  - text: "ICES Data Portals"
-    url: "https://www.ices.dk/data/data-portals/Pages/default.aspx"
-  - text: "WGMLEARN GitHub Organization"
-    url: "https://github.com/ices-eg/wgmlearn"
-  - text: "WKAAII Workshop Page"
-    url: "https://www.ices.dk/community/groups/Pages/WKAAII.aspx"
-
-publications:
-  - year: "2025"
-    title: "WGMLEARN Annual Report 2024"
-    citation: "ICES Scientific Reports, 6:92"
-  - year: "2024"
-    title: "A review of computer vision applications in marine science"
-    citation: "ICES Journal of Marine Science, Vol 81"
-  - year: "2023"
-    title: "Establishing benchmark datasets for marine species classification"
-    citation: "ICES Cooperative Research Report No. 359"
 ---
 
 The **Working Group on Machine Learning in Marine Science (WGMLEARN)** serves as the interdisciplinary hub within the International Council for the Exploration of the Sea (ICES) for integrating Artificial Intelligence (AI) and Machine Learning (ML) into marine research.
@@ -108,5 +64,5 @@ General-purpose language or image models do not understand oceanography, acousti
 
 WGMLEARN is an active, open, and collaborative community. Whether you are an AI/ML specialist, a marine ecologist, or an offshore software engineer, your skills are needed to steer the future of Marine AI.
 
-* Check out our **Quick Links** on the sidebar to explore our repositories, databases, and community channels.
-* Contact the Working Group Chairs directly to inquire about participating in our next annual meeting, joining an upcoming hackathon, or co-authoring a tutorial!
+* Explore the [WGMLEARN GitHub organization](https://github.com/ices-eg/wgmlearn) and the [ICES WGMLEARN page](https://www.ices.dk/community/groups/Pages/WGMLEARN.aspx).
+* Visit the [About page]({{ '/about/' | relative_url }}) to contact the Working Group Chairs and learn how to participate in upcoming activities.

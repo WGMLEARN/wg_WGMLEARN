@@ -2,7 +2,7 @@
 $color-navy: #002D54; // Primary ICES navy blue
 $color-sapphire: #1E567A; // Secondary ocean blue for hover and sub-headings
 $color-teal: #00828A; // Institutional Teal Accent
-$color-light-gray: #F5F7F8; // Background for breadcrumbs & sidebar
+$color-light-gray: #F5F7F8; // Background for breadcrumbs and table states
 $color-border-gray: #D1D5DB; // Subtle gray borders
 $color-dark-charcoal: #212529; // Body text
 $color-white: #FFFFFF;
@@ -160,11 +160,8 @@ a {
   min-height: calc(100vh - 350px);
 }
 
-// Two-Column Grid Layout
-.two-column-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
+// Main Content Layout
+.content-layout {
   max-width: 1200px;
   margin: 2.5rem auto;
   padding: 0 1.5rem;
@@ -269,120 +266,6 @@ a {
   }
 }
 
-// Sidebar Column (ICES SharePoint Widget Style)
-.sidebar-column {
-  display: flex;
-  flex-direction: column;
-  gap: 1.8rem;
-}
-
-.sidebar-block {
-  background-color: $color-light-gray;
-  border-top: 4px solid $color-sapphire;
-  border-radius: 4px;
-  padding: 1.5rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-
-  &.chair-block {
-    border-top-color: $color-teal;
-  }
-
-  h3 {
-    margin-top: 0;
-    margin-bottom: 1.2rem;
-    color: $color-navy;
-    font-size: 1.2rem;
-    font-weight: 700;
-    border-bottom: 1px solid rgba(0, 45, 84, 0.1);
-    padding-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-}
-
-.chair-info {
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  .chair-affiliation {
-    color: #495057;
-    font-size: 0.88rem;
-  }
-
-  .chair-country {
-    color: #6c757d;
-    font-size: 0.85rem;
-  }
-
-  .email-link {
-    display: inline-block;
-    margin-top: 0.3rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-  }
-}
-
-.sidebar-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  li {
-    margin-bottom: 1rem;
-    font-size: 0.92rem;
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
-    padding-bottom: 0.8rem;
-
-    &:last-child {
-      margin-bottom: 0;
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .event-date {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: $color-teal;
-      text-transform: uppercase;
-    }
-
-    .event-title {
-      color: $color-navy;
-    }
-
-    .event-location {
-      font-size: 0.82rem;
-      color: #6c757d;
-    }
-
-    .pub-year {
-      font-weight: 700;
-      color: $color-sapphire;
-      margin-right: 0.3rem;
-    }
-
-    .pub-meta {
-      font-size: 0.82rem;
-      color: #6c757d;
-    }
-  }
-}
-
-.links-list {
-  li {
-    padding-bottom: 0.5rem !important;
-
-    a {
-      font-weight: 600;
-      display: block;
-    }
-  }
-}
-
 // Site Footer
 .site-footer {
   background-color: $color-footer-dark;
@@ -448,10 +331,6 @@ a {
 
 // Responsiveness Breakpoints
 @media (min-width: 768px) {
-  .two-column-layout {
-    grid-template-columns: 70% 30%;
-  }
-
   .footer-col-wrapper {
     grid-template-columns: 1fr 1fr 1fr;
   }
