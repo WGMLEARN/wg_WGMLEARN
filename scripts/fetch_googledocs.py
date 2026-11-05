@@ -72,6 +72,20 @@ def get_document_markdown(meeting):
     return converter.handle(html_content)
 
 
+def convert_html_to_markdown(html_content: str) -> str:
+    """Convert an HTML fragment to Markdown."""
+    converter = html2text.HTML2Text()
+    converter.body_width = 0
+    converter.ignore_links = False
+    converter.ignore_images = False
+    converter.unicode_snob = True
+    # Prevent html2text from mangling complex tables by passing them through as HTML
+    converter.bypass_tables = True
+
+    markdown = converter.handle(html_content).strip()
+    return markdown
+
+
 def slugify(value):
     """Create a URL-safe slug suitable for filenames and permalinks."""
     slug = re.sub(r"[^\w\s-]", "", value).strip().lower()
