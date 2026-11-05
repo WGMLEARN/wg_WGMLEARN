@@ -33,7 +33,7 @@ jobs:
           GOOGLE_DOC_ID_2026: ${{ secrets.GOOGLE_DOC_ID_2026 }}
           OUTPUT_DIR: docs/_posts
         run: |
-          pip install html2text
+          pip install html2text beautifulsoup4
           python scripts/fetch_googledocs.py
 
       - name: Setup Pages configuration
