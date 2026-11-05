@@ -47,18 +47,63 @@ def load_meetings():
     return meetings
 
 
+def convert_html_to_markdown(html_content: str) -> str:
+    """Convert HTML to Markdown while preserving tables as clean HTML."""
+    soup = BeautifulSoup(html_content, "html.parser")
+    tables = {}
+
+    # Strip hardcoded Google Docs CSS to allow Jekyll theme styling
+    for table in soup.find_all("table"):
+        tags_to_clean = [table] + list(table.find_all(True))
+        for tag in tags_to_clean:
+            allowed_attrs = ["colspan", "rowspan", "href", "src", "alt"]
+            attrs_to_remove = [attr for attr in tag.attrs if attr not in allowed_attrs]
+            for attr in attrs_to_remove:
+                del tag[attr]
+
+    # Extract tables and replace with tokens
+    for table in soup.find_all("table"):
+        if table.find_parent("table"):
+            continue  # Preserve nested tables as part of their parent.
+
+        token = f"WGMTABLE{uuid4().hex.upper()}END"
+        # Remove newlines so Kramdown doesn't break the injected HTML block
+        tables[token] = str(table).replace("\n", "")
+        table.replace_with(NavigableString(f"\n\n{token}\n\n"))
+
+    converter = html2text.HTML2Text()
+    converter.body_width = 0
+    converter.ignore_links = False
+    converter.ignore_images = False
+    converter.bypass_tables = True
+
+    markdown = converter.handle(str(soup)).strip()
+
+    # Re-inject the clean HTML tables
+    for token, table_html in tables.items():
+        markdown = markdown.replace(token, f"\n\n{table_html}\n\n")
+
+    return markdown.strip()
+
+
 def get_document_markdown(meeting):
     """Download a meeting document and convert its HTML export to Markdown."""
     document_env = meeting["document_env"]
     document_id = os.environ.get(document_env)
-    if not document_id:
+
+    # Extract clean ID in case a full URL was accidentally provided
+    match = re.search(r"/document/d/([a-zA-Z0-9-_]+)", document_id or "")
+    clean_id = match.group(1) if match else document_id
+
+    if not clean_id:
         raise ValueError(
             f"{document_env} is missing for meeting '{meeting['id']}'. "
             "Set the corresponding GitHub Actions secret."
         )
 
-    export_url = f"https://docs.google.com/document/d/{document_id}/export?format=html"
+    export_url = f"https://docs.google.com/document/d/{clean_id}/export?format=html"
     request = urllib.request.Request(export_url, headers={"User-Agent": "Mozilla/5.0"})
+
     try:
         with urllib.request.urlopen(request) as response:
             html_content = response.read().decode("utf-8")
@@ -68,41 +113,13 @@ def get_document_markdown(meeting):
             "Ensure the document is accessible to the workflow."
         ) from error
 
-    converter = html2text.HTML2Text()
-    converter.ignore_links = False
-    converter.body_width = 0
-    return converter.handle(html_content)
-
-
-def convert_html_to_markdown(html_content: str) -> str:
-    """Convert HTML to Markdown while preserving tables as HTML."""
-    soup = BeautifulSoup(html_content, "html.parser")
-    tables = {}
-
-    for table in soup.find_all("table"):
-        if table.find_parent("table"):
-            continue  # Preserve nested tables as part of their parent.
-
-        token = f"WGMTABLE{uuid4().hex.upper()}END"
-        tables[token] = str(table)
-        table.replace_with(NavigableString(f"\n\n{token}\n\n"))
-
-    converter = html2text.HTML2Text()
-    converter.body_width = 0
-    converter.ignore_links = False
-    converter.ignore_images = False
-
-    markdown = converter.handle(str(soup)).strip()
-    for token, table_html in tables.items():
-        markdown = markdown.replace(token, f"\n\n{table_html}\n\n")
-
-    return markdown.strip()
+    return convert_html_to_markdown(html_content)
 
 
 def slugify(value):
-    """Create a URL-safe slug suitable for filenames and permalinks."""
+    """Create a URL-safe slug, truncated to avoid OS file-length limits."""
     slug = re.sub(r"[^\w\s-]", "", value).strip().lower()
-    return re.sub(r"[-\s]+", "-", slug) or "section"
+    return re.sub(r"[-\s]+", "-", slug)[:50].strip("-") or "section"
 
 
 def write_post(meeting, title, body, section_order):
@@ -124,6 +141,7 @@ def write_post(meeting, title, body, section_order):
         "section_order": section_order,
         "permalink": permalink,
     }
+
     yaml_lines = "\n".join(
         f"{key}: {json.dumps(value, ensure_ascii=False)}"
         for key, value in front_matter.items()
@@ -142,7 +160,15 @@ def import_meeting(meeting):
         return
 
     for section_order, index in enumerate(range(1, len(sections), 2), start=1):
-        write_post(meeting, sections[index].strip(), sections[index + 1], section_order)
+        title = " ".join(sections[index].split())
+        body = sections[index + 1].strip()
+
+        # Safeguard against accidentally styled massive paragraphs
+        if len(title) > 100:
+            body = f"### {title}\n\n{body}"
+            title = title[:40].strip() + "..."
+
+        write_post(meeting, title, body, section_order)
 
 
 def main():

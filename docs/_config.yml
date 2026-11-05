@@ -2,8 +2,8 @@ title: "ICES WGMLEARN"
 email: "info@ices.dk"
 description: "ICES Working Group on Machine Learning in Marine Science"
 baseurl: "/" # subpath of your site, e.g. /my-site
-url: "https://wgmlearn.org/" # base hostname & protocol for your site, e.g. http://localhost:4000
-github_username: "jason-conner-NOAA"
+url: "https://wgmlearn.org/" 
+github_username: "WGMLEARN"
 
 # Build settings
 theme: null # Custom HTML/CSS foundation rather than a gem-based theme
