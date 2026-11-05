@@ -11,8 +11,10 @@ import re
 import urllib.error
 import urllib.request
 from pathlib import Path
+from uuid import uuid4
 
 import html2text
+from bs4 import BeautifulSoup, NavigableString
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 MEETINGS_FILE = Path(
@@ -73,17 +75,28 @@ def get_document_markdown(meeting):
 
 
 def convert_html_to_markdown(html_content: str) -> str:
-    """Convert an HTML fragment to Markdown."""
+    """Convert HTML to Markdown while preserving tables as HTML."""
+    soup = BeautifulSoup(html_content, "html.parser")
+    tables = {}
+
+    for table in soup.find_all("table"):
+        if table.find_parent("table"):
+            continue  # Preserve nested tables as part of their parent.
+
+        token = f"WGMTABLE{uuid4().hex.upper()}END"
+        tables[token] = str(table)
+        table.replace_with(NavigableString(f"\n\n{token}\n\n"))
+
     converter = html2text.HTML2Text()
     converter.body_width = 0
     converter.ignore_links = False
     converter.ignore_images = False
-    converter.unicode_snob = True
-    # Prevent html2text from mangling complex tables by passing them through as HTML
-    converter.bypass_tables = True
 
-    markdown = converter.handle(html_content).strip()
-    return markdown
+    markdown = converter.handle(str(soup)).strip()
+    for token, table_html in tables.items():
+        markdown = markdown.replace(token, f"\n\n{table_html}\n\n")
+
+    return markdown.strip()
 
 
 def slugify(value):
